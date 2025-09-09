@@ -6,35 +6,39 @@
     <title>Portfolio</title>
     <link rel="stylesheet" href="styles/main.css" />
   </head>
-  <body>
-    <header class="sidebar">
-      <h1 class="text-3x1 font-bold underline">tst</h1>
-      <nav class="principal-menu">
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Projects</a></li>
-          <li><a href="#">Contact</a></li>
+  <body
+    class="flex flex-row font-sans m-0 p-0 bg-gradient-to-br from-[#222326] to-[#383838] text-gray-100"
+  >
+    <header class="flex flex-col h-screen border-r border-gray-600">
+      <h1 class="text-center mt-10">tst</h1>
+      <nav class="flex-1 content-center principal-menu mt-4">
+        <ul class="text-center">
+          <li><a href="#">○</a></li>
+          <li><a href="#">○</a></li>
+          <li><a href="#">○</a></li>
+          <li><a href="#">○</a></li>
         </ul>
       </nav>
-      <nav class="footer-nav">
-        <ul>
+      <nav class="footer-nav mb-10">
+        <ul class="text-center">
           <li><a href="#">test</a></li>
           <li><a href="#">test2</a></li>
         </ul>
       </nav>
     </header>
-    <main>
-      <nav class="secondary-menu">
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Projects</a></li>
-          <li><a href="#">Contact</a></li>
+    <main class="flex-1 flex flex-col m-10">
+      <nav class="secondary-menu flex justify-end">
+        <ul class="flex w-1/2">
+          <li class="inline-block mr-auto"><a href="#">Home</a></li>
+          <li class="inline-block mr-auto"><a href="#">About</a></li>
+          <li class="inline-block mr-auto"><a href="#">Projects</a></li>
+          <li class="inline-block"><a href="#">Contact</a></li>
         </ul>
       </nav>
-      <h1>Matias</h1>
-      <p>DevOps</p>
+      <div class="flex-col self-end mt-20">
+        <h1>Matias</h1>
+        <h2>Web Dev</h2>
+      </div>
     </main>
     <script src="dist/main.js"></script>
   </body>
