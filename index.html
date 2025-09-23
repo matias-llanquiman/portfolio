@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="styles/main.css" />
   </head>
   <body
-    class="flex flex-row font-[Inter] m-0 p-0 bg-gradient-to-br from-[#383838] to-[#222326] text-gray-100"
+    class="flex flex-col min-h-screen font-[Inter] m-0 p-0 bg-gradient-to-br from-[#383838] to-[#222326] text-gray-100"
   >
-    <header class="flex flex-col h-screen w-15 mt-8">
-      <div class="flex justify-center">
+    <header class="flex flex-row m-8">
+      <div class="flex">
         <svg
           class="fill-white h-7 w-7"
           xmlns="http://www.w3.org/2000/svg"
@@ -22,8 +22,26 @@
           />
         </svg>
       </div>
-      <nav class="flex-1 content-center">
-        <ul class="flex flex-col items-center">
+      <nav class="flex flex-1 justify-end">
+        <ul class="hidden sm:flex w-1/2 tabs tabs-border">
+          <li class="mr-auto">
+            <a class="tab tab-active" href="#">Home</a>
+          </li>
+          <li class="mr-auto">
+            <a class="tab" href="#">About</a>
+          </li>
+          <li class="mr-auto">
+            <a class="tab" href="#">Projects</a>
+          </li>
+          <li class="mr-auto">
+            <a class="tab" href="#">Contact</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main class="flex items-center">
+      <nav class="flex-none">
+        <ul>
           <li class="mb-4">
             <a href="#"
               ><svg
@@ -52,37 +70,20 @@
           </li>
         </ul>
       </nav>
-    </header>
-    <main class="flex-1 flex flex-col mt-8">
-      <nav class="flex justify-end">
-        <ul class="hidden sm:flex w-1/2 tabs tabs-border">
-          <li class="mr-auto">
-            <a class="tab tab-active" href="#">Home</a>
-          </li>
-          <li class="mr-auto">
-            <a class="tab" href="#">About</a>
-          </li>
-          <li class="mr-auto">
-            <a class="tab" href="#">Projects</a>
-          </li>
-          <li class="mr-auto">
-            <a class="tab" href="#">Contact</a>
-          </li>
-        </ul>
-      </nav>
-      <div class="flex-col self-center sm:w-1/2 my-auto">
-        <h1 class="text-7xl">Matías Llanquimán</h1>
-        <h2 class="text-4xl">Desarrollador Web</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
-        </p>
+      <div class="flex-1 self-center">
+        <div class="">
+          <h1 class="text-7xl">Matías Llanquimán</h1>
+          <h2 class="text-4xl">Desarrollador Web</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat.
+          </p>
+        </div>
       </div>
-    </main>
-    <div class="flex flex-col justify-center mr-4">
-      <nav class="">
+
+      <nav class="flex-none">
         <ul>
           <li><a href="#">○</a></li>
           <li><a href="#">○</a></li>
@@ -90,7 +91,7 @@
           <li><a href="#">○</a></li>
         </ul>
       </nav>
-    </div>
+    </main>
     <script src="dist/main.js"></script>
   </body>
 </html>
