@@ -11,6 +11,17 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+function getColor() {
+  let r = 25 + 20;
+  let g = 35 + 20;
+  let b = 42 + 20;
+  let alpha = Math.random() * 0.5 + 0.3;
+
+  let color = `rgba(${r}, ${g}, ${b}, ${alpha})`;
+
+  return color;
+}
+
 class Triangle {
   constructor(x, y, directionX, directionY, angle, size, color) {
     this.x = x;
@@ -23,7 +34,6 @@ class Triangle {
   }
 
   draw() {
-    ctx.globalAlpha = 0.5;
     ctx.fillStyle = this.color;
     ctx.save();
     ctx.translate(this.x, this.y);
@@ -48,6 +58,7 @@ class Triangle {
     this.x += this.directionX;
     this.y += this.directionY;
     this.angle += 0.001;
+    this.draw();
   }
 }
 
@@ -62,9 +73,7 @@ function init() {
     let y = getRandomInt(0, canvas.height);
     let directionX = Math.random() * 0.2 - 0.1;
     let directionY = Math.random() * 0.2 - 0.1;
-    let rgb = getRandomInt(40, 80);
-    let color = `rgb(${rgb}, ${rgb}, ${rgb})`;
-
+    const color = getColor();
     shapes.push(new Triangle(x, y, directionX, directionY, angle, size, color));
   }
 }
@@ -74,7 +83,6 @@ function animate() {
   ctx.fillStyle = "rgb(29, 35, 42)";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   for (let shape of shapes) {
-    shape.draw();
     shape.update();
   }
 }
