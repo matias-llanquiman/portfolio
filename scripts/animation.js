@@ -6,13 +6,12 @@ canvas.height = window.innerHeight;
 
 ctx.fillStyle = "rgb(29, 35, 42)";
 ctx.fillRect(0, 0, canvas.width, canvas.height);
-const particleRadius = 13;
 
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-class Particle {
+class Triangle {
   constructor(x, y, directionX, directionY, angle, size, color) {
     this.x = x;
     this.y = y;
@@ -49,14 +48,13 @@ class Particle {
     this.x += this.directionX;
     this.y += this.directionY;
     this.angle += 0.001;
-    this.draw();
   }
 }
 
-let particles;
+let shapes;
 
 function init() {
-  particles = [];
+  shapes = [];
   for (let i = 0; i < 60; i++) {
     let size = getRandomInt(7, 20);
     let angle = Math.random() * Math.PI * 2;
@@ -66,21 +64,27 @@ function init() {
     let directionY = Math.random() * 0.2 - 0.1;
     let rgb = getRandomInt(40, 80);
     let color = `rgb(${rgb}, ${rgb}, ${rgb})`;
-    console.log(color);
 
-    particles.push(
-      new Particle(x, y, directionX, directionY, angle, size, color),
-    );
+    shapes.push(new Triangle(x, y, directionX, directionY, angle, size, color));
   }
 }
 
 function animate() {
   requestAnimationFrame(animate);
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  for (let i = 0; i < particles.length; i++) {
-    particles[i].update();
+  ctx.fillStyle = "rgb(29, 35, 42)";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  for (let shape of shapes) {
+    shape.draw();
+    shape.update();
   }
 }
 
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+window.addEventListener("resize", resizeCanvas);
+
+resizeCanvas();
 init();
 animate();
