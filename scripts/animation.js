@@ -24,6 +24,7 @@ class Particle {
   }
 
   draw() {
+    ctx.globalAlpha = 0.5;
     ctx.fillStyle = this.color;
     ctx.save();
     ctx.translate(this.x, this.y);
@@ -44,10 +45,10 @@ class Particle {
     }
     if (this.y > canvas.height || this.y < 0) {
       this.directionY = -this.directionY;
-      this.angle -= 2;
     }
     this.x += this.directionX;
     this.y += this.directionY;
+    this.angle += 0.001;
     this.draw();
   }
 }
@@ -56,21 +57,17 @@ let particles;
 
 function init() {
   particles = [];
-  let count = 2;
   for (let i = 0; i < 60; i++) {
     let size = getRandomInt(7, 20);
     let angle = Math.random() * Math.PI * 2;
     let x = getRandomInt(0, canvas.width);
     let y = getRandomInt(0, canvas.height);
-    let directionX = Math.random() * 0.5 - 0.25;
-    let directionY = Math.random() * 0.5 - 0.25;
-    let color = `rgb(${Math.floor(255 - 42.5 * count)} ${Math.floor(
-      255 - 42.5 * count,
-    )} ${Math.floor(255 - 42.5 * count)})`;
-    count++;
-    if (count > 4) {
-      count = 2;
-    }
+    let directionX = Math.random() * 0.2 - 0.1;
+    let directionY = Math.random() * 0.2 - 0.1;
+    let rgb = getRandomInt(40, 80);
+    let color = `rgb(${rgb}, ${rgb}, ${rgb})`;
+    console.log(color);
+
     particles.push(
       new Particle(x, y, directionX, directionY, angle, size, color),
     );
