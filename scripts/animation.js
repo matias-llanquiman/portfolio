@@ -73,7 +73,7 @@ function init() {
     let y = getRandomInt(0, canvas.height);
     let directionX = Math.random() * 0.2 - 0.1;
     let directionY = Math.random() * 0.2 - 0.1;
-    const color = getColor();
+    const color = getShapeColor();
     shapes.push(new Triangle(x, y, directionX, directionY, angle, size, color));
   }
 }
