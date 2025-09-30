@@ -11,10 +11,10 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function getColor() {
-  let r = 25 + 20;
-  let g = 35 + 20;
-  let b = 42 + 20;
+function getShapeColor() {
+  let r = 25 + 25;
+  let g = 35 + 25;
+  let b = 42 + 25;
   let alpha = Math.random() * 0.5 + 0.3;
 
   let color = `rgba(${r}, ${g}, ${b}, ${alpha})`;
