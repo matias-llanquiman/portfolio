@@ -39,3 +39,7 @@
 .join-item:checked {
   @apply bg-[#d6bf81] border-none;
 }
+
+h1 {
+  white-space: pre-line;
+}
