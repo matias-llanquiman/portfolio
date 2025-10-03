@@ -28,24 +28,37 @@
         </a>
       </div>
       <nav id="header-nav" class="flex flex-1 justify-end">
-        <ul role="tablist" class="hidden sm:flex w-1/3 tabs tabs-border">
-          <li class="mr-auto">
-            <a role="tab" class="tab tab-active" href="#">Home</a>
-          </li>
-          <li class="mr-auto">
-            <a role="tab" class="tab" href="#">About</a>
-          </li>
-          <li class="mr-auto">
-            <a role="tab" class="tab" href="#">Projects</a>
-          </li>
-          <li role="tab" class="mr-auto">
-            <a class="tab" href="#">Contact</a>
-          </li>
-        </ul>
+        <div class="tabs tabs-border hidden sm:flex w-1/3">
+          <input
+            type="radio"
+            name="header_tabs"
+            class="tab mr-auto"
+            aria-label="Home"
+          />
+          <input
+            type="radio"
+            name="header_tabs"
+            class="tab mr-auto"
+            aria-label="About"
+            checked="checked"
+          />
+          <input
+            type="radio"
+            name="header_tabs"
+            class="tab mr-auto"
+            aria-label="Projects"
+          />
+          <input
+            type="radio"
+            name="header_tabs"
+            class="tab mr-auto"
+            aria-label="Contact"
+          />
+        </div>
       </nav>
     </header>
     <main class="flex flex-1 items-center justify-between mb-50">
-      <div class="join flex-col ml-10">
+      <div id="pagination" class="join flex-col ml-10">
         <input
           class="join-item btn btn-circle"
           type="radio"
