@@ -3,50 +3,57 @@ import { dataContent } from "../data/data.content.js";
 const navItems = document.querySelectorAll("#header-nav ul li a");
 const mainTitle = document.querySelector("#content #main-title");
 const mainContent = document.querySelector("#content #main-content");
+const radioPagination = document.querySelectorAll(
+  "#pagination input[type=radio]",
+);
 
-function toggleActive(e) {
-  navItems.forEach((item) => item.classList.remove("tab-active"));
-  e.currentTarget.classList.add("tab-active");
+let positionCount = 0;
+let isAnimating = false;
+
+function updateUI() {
+  const section = dataContent[positionCount];
+
+  if (!section) return;
+
+  mainTitle.classList.remove("show");
+  mainContent.classList.remove("show");
+
+  mainTitle.addEventListener(
+    "transitionend",
+    () => {
+      mainTitle.textContent = section.title || "";
+      mainContent.textContent = section.text || "";
+
+      mainTitle.classList.add("show");
+      mainContent.classList.add("show");
+
+      radioPagination.forEach((r, i) => (r.checked = i === positionCount));
+
+      isAnimating = false;
+    },
+    { once: true },
+  );
 }
 
-navItems.forEach((item) => {
-  item.addEventListener("click", toggleActive);
-});
+function handleWheel(e) {
+  if (isAnimating) return;
+  isAnimating = true;
 
-function modifyText(id) {
-  const section = dataContent.find((item) => item.id === id);
-  switch (id) {
-    case 1:
-      mainTitle.textContent = section.title1;
-      count -= 0.5;
-      break;
-    case 1.5:
-      const subSection = dataContent.find((item) => item.id === 1);
-      mainTitle.textContent = subSection.title2;
-      count -= 0.5;
-      break;
-    case 2:
-      mainTitle.textContent = section.title;
-      mainContent.textContent = section.text;
-      break;
-    case 3:
-      mainTitle.textContent = section.name;
-      mainContent.textContent = section.description;
-      break;
-
-    default:
-      break;
+  if (e.deltaY > 0 && positionCount < dataContent.length - 1) {
+    positionCount++;
+  } else if (e.deltaY < 0 && positionCount > 0) {
+    positionCount--;
   }
+
+  updateUI();
 }
 
-let count = 0;
-document.addEventListener("wheel", () => {
-  count++;
-  mainTitle.classList.toggle("show");
-  mainContent.classList.toggle("show");
-  setTimeout(() => {
-    modifyText(count);
-    mainTitle.classList.add("show");
-    mainContent.classList.add("show");
-  }, 800);
+document.addEventListener("wheel", handleWheel, { passive: true });
+
+navItems.forEach((item, i) => {
+  item.addEventListener("click", (e) => {
+    e.preventDefault();
+    positionCount = i;
+    updateUI();
+  });
 });
