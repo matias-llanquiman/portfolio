@@ -6,15 +6,11 @@
   @apply text-gray-300;
 }
 
-.tab:not(.tab-active):hover {
-  @apply text-[#b89f63];
-}
-
-.tab-active {
+.tab:checked {
   @apply text-[#d6bf81];
 }
 
-.tab-active:hover {
+.tab:hover {
   @apply text-[#b89f63];
 }
 
